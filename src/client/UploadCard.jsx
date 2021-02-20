@@ -37,7 +37,7 @@ const UploadCard = ({ cb }) => {
       </div>
       <p className="card__additional">Or</p>
       <label className="button button--input" htmlFor="image">
-        Upload an image
+        Choose a file
         <input 
           id="image"
           type="file" 
