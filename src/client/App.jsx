@@ -13,11 +13,12 @@ const App = () => {
 
   const upload = (formData) => {
     setIsUploading(true);
-    axios.post('/api/upload-image', formData,  {
+    axios.post('/api/upload-image', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-      onUploadProgress: progressEvent => console.log(progressEvent.loaded),}).then(
+      onUploadProgress: progressEvent => console.log(progressEvent.loaded)
+    }).then(
       (res) => {
         setImageUrl(`http://localhost:3000/images/${res.data.data.filename}`);
         setIsUploading(false);

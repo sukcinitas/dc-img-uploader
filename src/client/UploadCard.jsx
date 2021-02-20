@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import image from '../../public/image.svg';
 
 const UploadCard = ({ cb }) => {
@@ -6,10 +6,8 @@ const UploadCard = ({ cb }) => {
   const handleDrop = function (e, file) {
     e.preventDefault();
     e.stopPropagation();
-
     const formData = new FormData();
     formData.append('image', file);
-    console.log(formData, 'formData');
     cb(formData);
   }
 
