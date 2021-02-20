@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import image from '../../public/image.svg';
 
 const UploadCard = ({ cb }) => {
+
   const handleDrop = function (e, file) {
     e.preventDefault();
     e.stopPropagation();
@@ -9,25 +10,10 @@ const UploadCard = ({ cb }) => {
     const formData = new FormData();
     formData.append('image', file);
     console.log(formData, 'formData');
-    // axios.post('/api/upload-image', formData,  {
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data',
-    //   },
-    //   onUploadProgress: progressEvent => console.log(progressEvent.loaded),}).then(
-    //   (res) => {
-    //     console.log(res.data.data.filename);
-    //     // require(`../server/uploads/${res.data.data.filename}`).then(res => {
-    //     //   setImageSource(res);
-    //     // });
-    //     setImage(res.data.data.filename);
-    //     // setImage(URL.createObjectURL(selectedFile));
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //   },
-    // );
+    cb(formData);
   }
- const handleEv = function (e) {
+
+  const handleEv = function (e) {
     e.preventDefault();
     e.stopPropagation();
   }
