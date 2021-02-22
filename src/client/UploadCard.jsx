@@ -1,20 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+import Message from './Message';
 import image from '../../public/image.svg';
 
 const UploadCard = ({ cb }) => {
+  const [message, setMessage] = useState('');
+  const dropZone = useRef();
 
-  const handleDrop = function (e, file) {
+  const passOnToTransfer = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    let file;
+    if (e.target === dropZone.current || e.target.parentNode === dropZone.current) {
+      file = e.dataTransfer.files[0];
+    } else if (e.currentTarget.files && e.currentTarget.files.length !== 0) {
+      file = e.currentTarget.files[0];
+    } else {
+      return;
+    }
+
+    // multer limits does not work ??
+    if (file.size > 5 * 1024 * 1024) {
+      setMessage('File size must not exceed 5 MB!');
+      setTimeout(() => {
+        setMessage('');
+      }, 1000)
+      return;
+    }
     const formData = new FormData();
     formData.append('image', file);
     cb(formData);
   }
 
-  const handleEv = function (e) {
+  const preventDefaultBehavior = (e) => {
+    if (e.target !== dropZone.current && e.target.parentNode !== dropZone.current) {
+      // controls visual feedback, which cursor is displayed
+      e.dataTransfer.effectAllowed = 'none';
+    }
     e.preventDefault();
     e.stopPropagation();
   }
+
+  useEffect(() => {
+    window.addEventListener('dragover', (e) => preventDefaultBehavior(e), false);
+    window.addEventListener('drop', (e) => passOnToTransfer(e), false);  
+
+    return function cleanup() {
+      window.removeEventListener('dragover', (e) => preventDefaultBehavior(e), false);
+      window.removeEventListener('drop', (e) => passOnToTransfer(e), false);
+    }
+  });
+
   
   return (
     <form className="card" onSubmit={cb}>
@@ -24,13 +60,9 @@ const UploadCard = ({ cb }) => {
       </header>
       <div 
         className="card__box card__box--drop"
-        onDragEnter={handleEv}
-        onDrop={(e) => handleDrop(e, e.currentTarget.files[0])}
-        onDragStart={handleEv}
-        onDragOver={handleEv}
-        onDragLeave={handleEv}
-        onDragEnd={handleEv}
-        onDrag={handleEv}
+        ref={dropZone}
+        onDragEnter={preventDefaultBehavior}
+        onDragLeave={preventDefaultBehavior}
       >
         <img src={image} className="card__pic" alt="Icon of mountains and clouds" />
         <p className="card__additional">Drag &amp; Drop your image here</p>
@@ -44,9 +76,10 @@ const UploadCard = ({ cb }) => {
           className="button__input" 
           accept="image/png, image/jpeg"
           encType='multipart/form-data'
-          onChange={(e) => handleDrop(e, e.currentTarget.files[0])}
+          onChange={(e) => passOnToTransfer(e)}
         />
       </label>
+      {message && <Message>{message}</Message>}
     </form>
   )
 }
