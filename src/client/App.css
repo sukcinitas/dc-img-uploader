@@ -11,7 +11,7 @@
   --gray-6: #F2F2F2;
   --gray-7: #F6F8FB;
   --gray-8: #E0E0E0;
-  --shadow: rgba(0,0,0,0.1);
+  --shadow: rgba(0, 0, 0, 0.1);
   --blue-1: #2F80ED;
   --blue-2: #97BEF4;
   --green: #219653;
@@ -31,10 +31,16 @@
 
 body {
   background-color: var(--gray-1);
+  min-height: 100vh;
+}
+
+.main {
+  padding: 20px;
+  min-height: 100vh;
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -47,6 +53,11 @@ body {
   color: var(--gray-5);
 }
 
+.footer__link {
+  color: inherit;
+  text-decoration: none;
+}
+
 .card {
   width: 400px;
   margin: 0 auto;
@@ -54,6 +65,7 @@ body {
   box-shadow: 0px 4px 12px var(--shadow);
   border-radius: 12px;
   padding: 36px;
+  margin: 20px auto;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -105,10 +117,12 @@ body {
   background-color: var(--gray-7);
   border: 1px dashed var(--blue-2);
   padding: 18px;
+  overflow: hidden;
 }
 
 .card__box--img {
   background-size: cover;
+  background-position: center;
   height: 224px;
 }
 
@@ -154,6 +168,7 @@ body {
   justify-content: space-between;
   height: 34px;
   margin-top: 25px;
+  overflow: hidden;
 }
 
 .card__link {
@@ -203,11 +218,13 @@ body {
   line-height: 12px;
   letter-spacing: -0.035em;
   position: relative;
+  cursor: pointer;
 }
 
 .button--input {
   display: block;
   width: max-content;
+  position: relative;
 }
 
 .button__input {
@@ -218,4 +235,44 @@ body {
   left: 0;
   opacity: 0;
   cursor: pointer;
+}
+
+.message {
+  background-color: var(--gray-2);
+  color: var(--light-1);
+  border-radius: 4px;
+  font-family: var(--font-3);
+  font-weight: 500;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border: none;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+@media screen and (max-width: 460px) {
+
+  .card {
+    width: 80%;
+  }
+}
+
+@media screen and (max-height: 640px) {
+
+  .card {
+    position: static;
+    -moz-transform: none;
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  .footer {
+    position: static;
+  }
 }
