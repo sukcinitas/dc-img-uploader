@@ -1,6 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 
-const LoadedCard = ({imgUrl}) => {
+import Message from './Message';
+
+const LoadedCard = ({ imgUrl }) => {
+  const [message, setMessage] = useState('');
   const imgUrlRef = useRef(null);
 
   const clipText = () => {
@@ -13,10 +16,17 @@ const LoadedCard = ({imgUrl}) => {
       document.execCommand('copy');
       return;
     }
+    // The clipboard-write permission is granted automatically to pages when they are in the active tab
     navigator.clipboard.writeText(imgUrlRef.current.innerText).then(() => {
-      console.log('Copying to clipboard was successful!');
+      setMessage('Copying to clipboard was successful!');
+      setTimeout(() => {
+        setMessage('');
+      }, 1000)
     }, (err) => {
-      console.error(err);
+      setMessage('Copying to clipboard failed!');
+      setTimeout(() => {
+        setMessage('');
+      }, 1000)
     });
   }
 
@@ -34,6 +44,7 @@ const LoadedCard = ({imgUrl}) => {
         <p className="card__link" ref={imgUrlRef}>{imgUrl}</p>
         <button size="small" className="button button--small" onClick={clipText}>Copy Link</button>
       </div>
+      {message && <Message>{message}</Message>}
     </div>
   )
 }
