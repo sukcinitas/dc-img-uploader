@@ -1,12 +1,11 @@
-import { merge } from 'webpack-merge';
-import sass from 'sass';
-import path from 'path';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import TerserPlugin from 'terser-webpack-plugin';
-import common from './webpack.common';
+const path = require('path');
+const { merge }  = require('webpack-merge');
+const common = require('./webpack.common');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
-export default merge(common, {
+module.exports = merge(common, {
   mode: 'production', // configures DefinePlugin by default since v4
   output: {
     filename: 'main.[contentHash].js',
@@ -17,6 +16,7 @@ export default merge(common, {
     minimize: true,
     minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
   },
+  plugins: [new MiniCssExtractPlugin()],
   devtool: false,
   module: {
     rules: [
@@ -25,7 +25,6 @@ export default merge(common, {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader',
         ],
       },
     ],

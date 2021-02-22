@@ -9,7 +9,7 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
-  devtool: 'inline-source-map', // as well as eval increases bundle size and reduces the overall performance
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
     historyApiFallback: true,
