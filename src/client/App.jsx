@@ -28,6 +28,9 @@ const App = () => {
       setMessage('Something went wrong!')
     } finally {
       setIsUploading(false);
+      setTimeout(() => {
+        setMessage('');
+      }, 1000);
     }
   }
 
@@ -35,7 +38,7 @@ const App = () => {
     {(!isUploading && !imageUrl) && <UploadCard cb={upload} />}
     {isUploading && <Loader />}
     {(!isUploading && imageUrl) && <LoadedCard imgUrl={imageUrl} />}
-    {message && <Message>{{message}}</Message>}
+    {message && <Message>{message}</Message>}
     <Footer />
   </div>)
 }

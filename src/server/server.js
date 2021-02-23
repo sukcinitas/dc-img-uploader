@@ -77,6 +77,11 @@ app.get('/images/:name', (req, res) => {
     res.sendFile(`${__dirname}/images/${req.params.name}`);
 });
 
+process.on('uncaughtException', function(err) {
+    res.status(500).send(err);
+});
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () =>
     console.log(`App is listening on port ${port}.`)
