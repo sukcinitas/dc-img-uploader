@@ -34,29 +34,14 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('dist'));
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.header(
-      'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept',
-    );
-    res.header(
-      'Access-Control-Allow-Method',
-      'GET, POST, PUT, PATCH, POST, DELETE, HEAD, OPTIONS',
-    );
-    res.header('Access-Control-Max-Age', '86400');
-    next();
-  });
-
 const emptyDir = async (directory, currentFile) => {
     const files = await fs.readdir(directory);
-    if(files.length < 3) {
+    if(files.length < 4) {
         return;
     }
     for(let i = 0; i < files.length; i++) {
         if (files[i] === currentFile) {
-            return;
+            continue;
         } else {
             await fs.unlink(path.join(directory, files[i]));
         }
