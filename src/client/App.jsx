@@ -12,7 +12,7 @@ const App = () => {
   const [imageUrl, setImageUrl] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const [message, setMessage] = useState('');
-  const location = 'http://localhost:3000';
+  const location = window.location.href === 'http://localhost:8080/' ? 'http://localhost:3000/' : window.location.href;
 
   const upload = async (formData) => {
     try {
@@ -23,7 +23,7 @@ const App = () => {
         },
         onUploadProgress: progressEvent => console.log(progressEvent.loaded),
       });
-      setImageUrl(`${location}/images/${result.data.data.filename}`);
+      setImageUrl(`${location}images/${result.data.data.filename}`);
     } catch (err) {
       setMessage('Something went wrong!')
     } finally {
