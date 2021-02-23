@@ -154,7 +154,7 @@ body {
 }
 
 @keyframes move {
-  from { left: -100px; }
+  from { left: 0%; }
   to   { left: 100%; }
 }
 

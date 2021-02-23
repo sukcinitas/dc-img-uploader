@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import Message from './Message';
-import image from '../../public/image.svg';
+import image from '../public/image.svg';
 
 const UploadCard = ({ cb }) => {
   const [message, setMessage] = useState('');
