@@ -121,9 +121,8 @@ body {
 }
 
 .card__box--img {
-  background-size: cover;
-  background-position: center;
   height: 224px;
+  object-fit: cover;
 }
 
 .card__pic {
