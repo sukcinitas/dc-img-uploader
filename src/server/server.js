@@ -4,6 +4,7 @@ const path = require('path');
 const shortid = require('shortid');
 const multer  = require('multer');
 const fs = require('fs').promises;
+require('dotenv').config()
 
 
 const storage = multer.diskStorage({
