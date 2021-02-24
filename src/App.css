@@ -129,6 +129,7 @@ body {
   display: block;
   margin: auto;
   padding: 18px;
+  height: 126px;
 }
 
 .card__loader {
@@ -148,13 +149,13 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: -90px;
+  left: -100px;
   background-color: var(--blue-1);
   animation: 3s linear 1s infinite running move;
 }
 
 @keyframes move {
-  from { left: 0%; }
+  from { left: -100px; }
   to   { left: 100%; }
 }
 
