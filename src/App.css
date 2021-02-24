@@ -204,6 +204,7 @@ body {
   border: none;
   margin: 0 auto;
   display: inline-block;
+  outline: none;
 }
 
 .button--small {
