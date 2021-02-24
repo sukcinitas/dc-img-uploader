@@ -24,7 +24,7 @@ const UploadCard = ({ cb }) => {
       setMessage('File size must not exceed 5 MB!');
       setTimeout(() => {
         setMessage('');
-      }, 1000)
+      }, 1500)
       return;
     }
     const formData = new FormData();
@@ -36,6 +36,8 @@ const UploadCard = ({ cb }) => {
     if (e.target !== dropZone.current && e.target.parentNode !== dropZone.current) {
       // controls visual feedback, which cursor is displayed
       e.dataTransfer.effectAllowed = 'none';
+    } else {
+      e.dataTransfer.effectAllowed = 'all'
     }
     e.preventDefault();
     e.stopPropagation();

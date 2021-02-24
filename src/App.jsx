@@ -26,12 +26,17 @@ const App = () => {
       });
       setImageUrl(`${location}${particle}images/${result.data.data.filename}`);
     } catch (err) {
-      setMessage('Something went wrong!')
+      if (err.response.status === 400) {
+        setMessage('Only jpeg or png file can be uploaded!')
+      } else {
+        setMessage('Something went wrong!')
+      }
+      formData.delete('image');
     } finally {
       setIsUploading(false);
       setTimeout(() => {
         setMessage('');
-      }, 1000);
+      }, 1500);
     }
   }
 
