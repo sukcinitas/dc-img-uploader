@@ -35,7 +35,6 @@ body {
 }
 
 .main {
-  padding: 20px;
   min-height: 100vh;
 }
 
@@ -260,7 +259,8 @@ body {
 @media screen and (max-width: 460px) {
 
   .card {
-    width: 80%;
+    width: 90%;
+    max-width: 400px;
   }
 }
 
@@ -271,9 +271,11 @@ body {
     -moz-transform: none;
     -webkit-transform: none;
     transform: none;
+    margin-top: 40px;
   }
 
   .footer {
-    position: static;
+    position: relative;
+    bottom: 0;
   }
 }
