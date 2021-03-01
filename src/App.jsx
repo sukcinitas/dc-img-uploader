@@ -13,7 +13,6 @@ const App = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [message, setMessage] = useState('');
   const location = window.location.href === 'http://localhost:8080/' ? 'http://localhost:3000/' : 'https://shining-lime-cobra.glitch.me/';
-  const particle = window.location.href === 'http://localhost:8080/' ? '' : 'app/';
 
   const upload = async (formData) => {
     try {
@@ -24,12 +23,12 @@ const App = () => {
         },
         onUploadProgress: progressEvent => console.log(progressEvent.loaded),
       });
-      setImageUrl(`${location}${particle}images/${result.data.data.filename}`);
+      setImageUrl(`${location}api/images/${result.data.data.filename}`);
     } catch (err) {
-      if (err.response.status === 400) {
-        setMessage('Only jpeg or png file can be uploaded!')
+      if (err.response && err.response.status === 400) {
+        setMessage('Only jpeg or png file can be uploaded!');
       } else {
-        setMessage('Something went wrong!')
+        setMessage('Something went wrong!');
       }
       formData.delete('image');
     } finally {
@@ -40,13 +39,24 @@ const App = () => {
     }
   }
 
-  return (<div className="main">
-    {(!isUploading && !imageUrl) && <UploadCard cb={upload} />}
-    {isUploading && <Loader />}
-    {(!isUploading && imageUrl) && <LoadedCard imgUrl={imageUrl} />}
-    {message && <Message>{message}</Message>}
-    <Footer />
-  </div>)
+  let value;
+  if (isUploading) {
+    value = <Loader />;
+  } else {
+    if (imageUrl) {
+      value = <LoadedCard imgUrl={imageUrl} />;
+    } else {
+      value = <UploadCard cb={upload} />;
+    }
+  }
+
+  return (
+    <div className="main">
+      {message && <Message>{message}</Message>}
+      {value}
+      <Footer />
+    </div>
+  )
 }
 
 export default App;

@@ -58,7 +58,7 @@ const UploadCard = ({ cb }) => {
     <form className="card" onSubmit={cb}>
       <header className="card__header">
         <h2 className="card__heading">Upload your image</h2>
-        <h4 className="card__subheading">File should be Jpeg, Png...</h4>
+        <h4 className="card__subheading">File should be JPEG, PNG or GIF</h4>
       </header>
       <div 
         className="card__box card__box--drop"

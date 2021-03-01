@@ -24,7 +24,7 @@ const LoadedCard = ({ imgUrl }) => {
       } finally {
         setTimeout(() => {
           setMessage('');
-        }, 1000)
+        }, 1500)
       }
       return;
     }
@@ -37,7 +37,7 @@ const LoadedCard = ({ imgUrl }) => {
     } finally {
       setTimeout(() => {
         setMessage('');
-      }, 1000)
+      }, 1500)
     }
   }
 

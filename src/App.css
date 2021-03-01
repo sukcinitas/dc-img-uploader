@@ -235,6 +235,7 @@ body {
   left: 0;
   opacity: 0;
   cursor: pointer;
+  width: 104px; /*make it button--input width*/
 }
 
 .message {
