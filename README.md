@@ -10,7 +10,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://devchallenges.io/solutions/9D72LuP3IIs87Y9rO6Ey">
       Solution
     </a>
     <span> | </span>
@@ -28,21 +28,23 @@
   - [Built With](#built-with)
 - [Features](#features)
 - [How to use](#how-to-use)
-- [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
 <!-- OVERVIEW -->
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![](https://github.com/sukcinitas/media/blob/master/img-uploader/img-uploader.gif)
 
 An application to upload images with removed EXIF data. You can find the demo [here](https://app.netlify.com/sites/imago-uploader/overview).
+A complementary API can be found [here](https://github.com/sukcinitas/dc-img-uploader-api).
+File upload is implemented with Express' Multer and EXIF removal with Piexifjs. Only three files can be uploaded at a time. File size is limited to 5 MB. File size limitation is implemented on client side, because it cannot be implemented using Multer (https://github.com/expressjs/multer/issues/602). The drop zone is limited using e.dataTransfer.effectAllowed = 'none';. If Clipboard API is accessible, it is used for copying an image URL.
 
 
 ### Built With
 
-- [React](https://reactjs.org/)
+- [React 17](https://reactjs.org/)
 - [Axios](https://www.npmjs.com/package/axios)
 
 #### Compiling
@@ -51,13 +53,21 @@ An application to upload images with removed EXIF data. You can find the demo [h
 
 #### Bundling
 
-- [Webpack](https://webpack.js.org/)
+- [Webpack 5](https://webpack.js.org/)
 
 ## Features
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx) was to build an application to complete the given user stories.
+
+User stories:
+
+- I can drag and drop an image to upload it
+- I can select an image from my folder to upload it
+- I can see a loader when uploading
+- When the image is uploaded, I can see the image and copy it
+- I can choose to copy image URL to the clipboard
 
 ## How To Use
 
