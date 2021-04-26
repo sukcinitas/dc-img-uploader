@@ -12,7 +12,7 @@ const App = () => {
   const [imageUrl, setImageUrl] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const [message, setMessage] = useState('');
-  const location = window.location.href === 'http://localhost:8080/' ? 'http://localhost:3000/' : 'https://shining-lime-cobra.glitch.me/';
+  const location = window.location.href === 'http://localhost:8080/' ? 'http://localhost:3000/' : 'https://boiling-citadel-16368.herokuapp.com/';
 
   const upload = async (formData) => {
     try {
