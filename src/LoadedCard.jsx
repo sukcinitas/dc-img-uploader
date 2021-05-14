@@ -23,7 +23,7 @@ const LoadedCard = ({ imgUrl }) => {
       }, 1500);
       return;
       }
-    The clipboard-write permission is granted automatically to pages when they are in the active tab
+    // The clipboard-write permission is granted automatically to pages when they are in the active tab
     try {
       await navigator.clipboard.writeText(imgUrlRef.current.innerText);
       setMessage(successMsg);
