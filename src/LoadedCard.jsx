@@ -10,25 +10,20 @@ const LoadedCard = ({ imgUrl }) => {
     const successMsg = 'Copying to clipboard was successful!';
     const errorMsg = 'Copying to clipboard failed!';
     if (!navigator.clipboard) {
-      try {
-        const range = document.createRange();
-        const selection = window.getSelection();
-        range.selectNodeContents(imgUrlRef.current);
-        selection.removeAllRanges();
-        selection.addRange(range);
-        const success = document.execCommand('copy');
-        const msg = success ? successMsg : errorMsg;
-        setMessage(msg);
-      } catch (err) {
-        setMessage(errorMsg);
-      } finally {
-        setTimeout(() => {
-          setMessage('');
-        }, 1500)
-      }
+      const range = document.createRange();
+      const selection = window.getSelection();
+      range.selectNodeContents(imgUrlRef.current);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      const success = document.execCommand('copy');
+      const msg = success ? successMsg : errorMsg;
+      setMessage(msg);
+      setTimeout(() => {
+        setMessage('');
+      }, 1500);
       return;
-    }
-    // The clipboard-write permission is granted automatically to pages when they are in the active tab
+      }
+    The clipboard-write permission is granted automatically to pages when they are in the active tab
     try {
       await navigator.clipboard.writeText(imgUrlRef.current.innerText);
       setMessage(successMsg);
