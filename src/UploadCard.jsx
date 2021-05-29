@@ -5,6 +5,7 @@ import image from '../public/image.svg';
 
 const UploadCard = ({ cb }) => {
   const [message, setMessage] = useState('');
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
   const dropZone = useRef();
 
   const passOnToTransfer = (e) => {
@@ -12,8 +13,10 @@ const UploadCard = ({ cb }) => {
     e.stopPropagation();
     let file;
     if (e.target === dropZone.current || e.target.parentNode === dropZone.current) {
+      // for drop
       file = e.dataTransfer.files[0];
     } else if (e.currentTarget.files && e.currentTarget.files.length !== 0) {
+      // for select
       file = e.currentTarget.files[0];
     } else {
       return;
@@ -36,8 +39,10 @@ const UploadCard = ({ cb }) => {
     if (e.target !== dropZone.current && e.target.parentNode !== dropZone.current) {
       // controls visual feedback, which cursor is displayed
       e.dataTransfer.effectAllowed = 'none';
+      dropZone.current && dropZone.current.classList.remove('card__box--drop-selected');
     } else {
-      e.dataTransfer.effectAllowed = 'all'
+      e.dataTransfer.effectAllowed = 'all';
+      dropZone.current && dropZone.current.classList.add('card__box--drop-selected');
     }
     e.preventDefault();
     e.stopPropagation();
@@ -55,7 +60,7 @@ const UploadCard = ({ cb }) => {
 
   
   return (
-    <form className="card" onSubmit={cb}>
+    <form className={isImgLoaded ? 'card' : 'card card--hidden'} onSubmit={cb}>
       <header className="card__header">
         <h2 className="card__heading">Upload your image</h2>
         <h4 className="card__subheading">File should be JPEG, PNG or GIF</h4>
@@ -66,7 +71,7 @@ const UploadCard = ({ cb }) => {
         onDragEnter={preventDefaultBehavior}
         onDragLeave={preventDefaultBehavior}
       >
-        <img src={image} className="card__pic" alt="Icon of mountains and clouds" />
+        <img src={image} className="card__pic" alt="Icon of mountains and clouds" onLoad={() => setIsImgLoaded(true)} />
         <p className="card__additional">Drag &amp; Drop your image here</p>
       </div>
       <p className="card__additional">Or</p>
@@ -75,8 +80,8 @@ const UploadCard = ({ cb }) => {
         <input 
           id="image"
           type="file" 
-          className="button__input" 
-          accept="image/png, image/jpeg"
+          className=" button button__input" 
+          accept="image/png, image/jpeg, image/gif"
           encType='multipart/form-data'
           onChange={(e) => passOnToTransfer(e)}
         />

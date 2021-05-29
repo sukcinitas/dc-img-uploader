@@ -14,7 +14,9 @@
   --shadow: rgba(0, 0, 0, 0.1);
   --blue-1: #2F80ED;
   --blue-2: #97BEF4;
-  --green: #219653;
+  --blue-3: #4e93ec;
+  --green-1: #219653;
+  --green-2: rgb(247, 255, 233);
 
   --font-1: 'Montserrat', sans-serif;
   --font-2: 'Poppins', sans-serif;
@@ -61,6 +63,7 @@ body {
 }
 
 .card {
+  visibility: visible;
   width: 400px;
   margin: 0 auto;
   background-color: var(--light-1);
@@ -74,6 +77,10 @@ body {
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
+}
+
+.card__hidden {
+  visibility: hidden;
 }
 
 .card__header {
@@ -120,6 +127,15 @@ body {
   border: 1px dashed var(--blue-2);
   padding: 18px;
   overflow: hidden;
+  transition: background-color 0.2s linear, border 0.2s linear;
+}
+
+.card__box--drop-selected {
+  background-color: var(--green-2);
+  border: 1px dashed var(--green-1);
+  padding: 18px;
+  overflow: hidden;
+  transition: background-color 0.25s linear, border 0.25s linear;
 }
 
 .card__box--img {
@@ -187,7 +203,7 @@ body {
 }
 
 .card__icon {
-  color: var(--green);
+  color: var(--green-1);
   display: block;
   margin: 0 auto;
   text-align: center;
@@ -207,6 +223,12 @@ body {
   margin: 0 auto;
   display: inline-block;
   outline: none;
+  transition: background-color 0.2s linear;
+}
+
+.button:hover {
+  background-color: var(--blue-3);
+  transition: background-color 0.2s linear;
 }
 
 .button--small {
@@ -265,7 +287,7 @@ body {
   .card {
     width: 90%;
     max-width: 400px;
-    margin: 20px auto;
+    margin: auto;
   }
 }
 
@@ -276,8 +298,8 @@ body {
     -moz-transform: none;
     -webkit-transform: none;
     transform: none;
-    margin-top: 40px;
     margin: 20px auto;
+    margin-top: 60px;
   }
 
   .footer {

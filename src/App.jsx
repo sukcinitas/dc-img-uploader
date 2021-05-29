@@ -26,7 +26,7 @@ const App = () => {
       setImageUrl(`${location}api/images/${result.data.data.filename}`);
     } catch (err) {
       if (err.response && err.response.status === 400) {
-        setMessage('Only jpeg or png file can be uploaded!');
+        setMessage('Only jpeg, png or gif files can be uploaded!');
       } else {
         setMessage('Something went wrong!');
       }
