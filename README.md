@@ -37,9 +37,9 @@
 
 ![](https://github.com/sukcinitas/media/blob/master/img-uploader/img-uploader.gif)
 
-An application to upload images with removed EXIF data. You can find the demo [here](https://app.netlify.com/sites/imago-uploader/overview).
+An application to upload images with removed EXIF data. You can find the demo [here](https://imago-uploader.netlify.app).
 A complementary API can be found [here](https://github.com/sukcinitas/dc-img-uploader-api).
-File upload is implemented with Express' Multer and EXIF removal with Piexifjs. Only three files can be uploaded at a time. File size is limited to 5 MB. File size limitation is implemented on client side, because it cannot be implemented using Multer (https://github.com/expressjs/multer/issues/602). The drop zone is limited using e.dataTransfer.effectAllowed = 'none';. If Clipboard API is accessible, it is used for copying an image URL.
+File upload is implemented with Express' Multer and EXIF removal with Piexifjs. Only three files can be uploaded at a time. File size is limited to 5 MB; file size limitation is implemented on client side.
 
 
 ### Built With
@@ -105,6 +105,7 @@ More details [here](https://github.com/sukcinitas/dc-img-uploader-api#setup).
 - An example how EXIF could be removed on front-end [here](https://stackoverflow.com/a/27638728) (though, in this case it is done on server).
 - [Handling File Uploads in Node.js with Express and Multer](https://stackabuse.com/handling-file-uploads-in-node-js-with-expres-and-multer/)
 - [Browser Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
+- [File size limitation cannot be implemented with Multer](https://github.com/expressjs/multer/issues/602).
 
 ## Contact
 
