@@ -53,7 +53,7 @@ const App = () => {
   return (
     <div className="main">
       {message && <Message>{message}</Message>}
-      {value}
+      <div className="wrapper">{value}</div>
       <Footer />
     </div>
   )

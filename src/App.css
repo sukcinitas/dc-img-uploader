@@ -31,9 +31,9 @@
   padding: 0;
 }
 
-body {
+html, body {
   background-color: var(--gray-1);
-  min-height: 100vh;
+  height: 100%;
 }
 
 #root {
@@ -41,7 +41,7 @@ body {
 }
 
 .main {
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -64,6 +64,11 @@ body {
 .footer__link {
   color: inherit;
   text-decoration: none;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
 }
 
 .card {
@@ -297,16 +302,8 @@ body {
 
 @media screen and (max-height: 640px) {
 
-  .card {
-    position: static;
-    -moz-transform: none;
-    -webkit-transform: none;
-    transform: none;
-    margin: 20px auto;
-    margin-top: 60px;
-  }
-
   .footer {
-    position:static;
+    position: static;
+    margin-top: auto;
   }
 }
