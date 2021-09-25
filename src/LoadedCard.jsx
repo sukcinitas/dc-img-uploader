@@ -10,14 +10,7 @@ const LoadedCard = ({ imgUrl }) => {
     const successMsg = 'Copying to clipboard was successful!';
     const errorMsg = 'Copying to clipboard failed!';
     if (!navigator.clipboard) {
-      const range = document.createRange();
-      const selection = window.getSelection();
-      range.selectNodeContents(imgUrlRef.current);
-      selection.removeAllRanges();
-      selection.addRange(range);
-      const success = document.execCommand('copy');
-      const msg = success ? successMsg : errorMsg;
-      setMessage(msg);
+      setMessage(errorMsg);
       setTimeout(() => {
         setMessage('');
       }, 1500);
