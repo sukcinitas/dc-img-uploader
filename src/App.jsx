@@ -11,6 +11,7 @@ import './App.css';
 const App = () => {
   const [imageUrl, setImageUrl] = useState('');
   const [isUploading, setIsUploading] = useState(false);
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
   const [message, setMessage] = useState('');
   const location = window.location.href === 'http://localhost:8080/' ? 'http://localhost:3000/' : 'https://boiling-citadel-16368.herokuapp.com/';
 
@@ -40,15 +41,13 @@ const App = () => {
   }
 
   let value;
-  if (isUploading) {
-    value = <Loader />;
+  if (isUploading || imageUrl) {
+      value = <>{(isUploading || !isImgLoaded) && <Loader />}<LoadedCard imgUrl={imageUrl} cb={() => setIsImgLoaded(true)} isImgLoaded={isImgLoaded}  /></>;
   } else {
-    if (imageUrl) {
-      value = <LoadedCard imgUrl={imageUrl} />;
-    } else {
-      value = <UploadCard cb={upload} />;
-    }
+    value = <UploadCard cb={upload} />;
   }
+
+  console.log(isUploading || imageUrl, isUploading || !isImgLoaded , value)
 
   return (
     <div className="main">
