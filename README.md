@@ -39,7 +39,7 @@
 
 An application to upload images with removed EXIF data. You can find the demo [here](https://imago-uploader.netlify.app).
 A complementary API can be found [here](https://github.com/sukcinitas/dc-img-uploader-api).
-File upload is implemented with Express' Multer and EXIF removal with Piexifjs. Only three files can be uploaded at a time. File size is limited to 5 MB; file size limitation is implemented on client side.
+File upload is implemented with Node.js Multer middleware and EXIF removal with Piexifjs. Only three lastly uploaded files are stored as this app is created only for learning purposes. File size is limited to 5 MB; file size limitation is implemented on a client side.
 
 
 ### Built With
@@ -57,8 +57,6 @@ File upload is implemented with Express' Multer and EXIF removal with Piexifjs. 
 
 ## Features
 
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
-
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/O2iGT9yBd6xZBrOcVirx) was to build an application to complete the given user stories.
 
 User stories:
@@ -70,8 +68,6 @@ User stories:
 - I can choose to copy image URL to the clipboard
 
 ## How To Use
-
-<!-- Example: -->
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
@@ -100,12 +96,10 @@ More details [here](https://github.com/sukcinitas/dc-img-uploader-api#setup).
 
 ## Acknowledgements
 
-<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example -->
-
 - An example how EXIF could be removed on front-end [here](https://stackoverflow.com/a/27638728) (though, in this case it is done on server).
 - [Handling File Uploads in Node.js with Express and Multer](https://stackabuse.com/handling-file-uploads-in-node-js-with-expres-and-multer/)
 - [Browser Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
-- [File size limitation cannot be implemented with Multer](https://github.com/expressjs/multer/issues/602).
+- [File size limitation couldn't be implemented with Multer](https://github.com/expressjs/multer/issues/602).
 
 ## Contact
 
