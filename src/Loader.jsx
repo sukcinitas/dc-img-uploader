@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Loader = () => {
   return (
@@ -8,7 +8,7 @@ const Loader = () => {
       </header>
       <div className="card__loader" role="progressbar"></div>
     </div>
-  )
-}
+  );
+};
 
 export default Loader;

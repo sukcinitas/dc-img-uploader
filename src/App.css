@@ -1,26 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins:wght@500&display=swap");
 
 :root {
-  --light-1: #FFFFFF;
-  --gray-1: #FAFAFB;
-  --gray-2: #4F4F4F;
+  --light-1: #ffffff;
+  --gray-1: #fafafb;
+  --gray-2: #4f4f4f;
   --gray-3: #828282;
-  --gray-4: #BDBDBD;
-  --gray-5: #A9A9A9;
-  --gray-6: #F2F2F2;
-  --gray-7: #F6F8FB;
-  --gray-8: #E0E0E0;
+  --gray-4: #bdbdbd;
+  --gray-5: #a9a9a9;
+  --gray-6: #f2f2f2;
+  --gray-7: #f6f8fb;
+  --gray-8: #e0e0e0;
   --shadow: rgba(0, 0, 0, 0.1);
-  --blue-1: #2F80ED;
-  --blue-2: #97BEF4;
+  --blue-1: #2f80ed;
+  --blue-2: #97bef4;
   --blue-3: #4e93ec;
   --green-1: #219653;
   --green-2: rgb(247, 255, 233);
 
-  --font-1: 'Montserrat', sans-serif;
-  --font-2: 'Poppins', sans-serif;
-  --font-3: 'Noto Sans', sans-serif;
+  --font-1: "Montserrat", sans-serif;
+  --font-2: "Poppins", sans-serif;
+  --font-3: "Noto Sans", sans-serif;
 }
 
 *,
@@ -31,7 +31,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   background-color: var(--gray-1);
   height: 100%;
 }
@@ -182,8 +183,12 @@ html, body {
 }
 
 @keyframes move {
-  from { left: -100px; }
-  to   { left: 100%; }
+  from {
+    left: -100px;
+  }
+  to {
+    left: 100%;
+  }
 }
 
 .card__link-wrapper {
@@ -293,7 +298,6 @@ html, body {
 }
 
 @media screen and (max-width: 460px) {
-
   .card {
     width: 90%;
     max-width: 400px;
@@ -302,7 +306,6 @@ html, body {
 }
 
 @media screen and (max-height: 640px) {
-
   .footer {
     position: static;
     margin-top: auto;

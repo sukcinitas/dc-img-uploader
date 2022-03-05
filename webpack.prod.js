@@ -1,15 +1,15 @@
-const path = require('path');
-const { merge }  = require('webpack-merge');
-const common = require('./webpack.common');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const path = require("path");
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = merge(common, {
-  mode: 'production', // configures DefinePlugin by default since v4
+  mode: "production", // configures DefinePlugin by default since v4
   output: {
-    filename: 'main.[contentHash].js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    filename: "main.[contentHash].js",
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
     clean: true,
   },
   optimization: {
@@ -22,10 +22,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.(scss|css)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
   },
