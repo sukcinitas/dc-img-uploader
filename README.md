@@ -41,7 +41,6 @@ An application to upload images with removed EXIF data. You can find the demo [h
 A complementary API can be found [here](https://github.com/sukcinitas/dc-img-uploader-api).
 File upload is implemented with Node.js Multer middleware and EXIF removal with Piexifjs. Only three lastly uploaded files are stored as this app is created only for learning purposes. File size is limited to 5 MB; file size limitation is implemented on a client side.
 
-
 ### Built With
 
 - [React 17](https://reactjs.org/)
@@ -84,14 +83,15 @@ $ npm run dev
 
 ```bash
 # Clone complementary api repository
-$ git clone https://github.com/sukcinitas/dc-img-uploader-api.git 
+$ git clone https://github.com/sukcinitas/dc-img-uploader-api.git
 
 # Install dependencies
-$ npm install 
+$ npm install
 
 # Run the app
 $ npm run dev
 ```
+
 More details [here](https://github.com/sukcinitas/dc-img-uploader-api#setup).
 
 ## Acknowledgements

@@ -1,36 +1,36 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   module: {
     rules: [
       {
         test: /\.html$/,
-        use: ['html-loader'],
+        use: ["html-loader"],
       },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env']
-          }
+            presets: ["@babel/preset-env"],
+          },
         },
       },
       {
         test: /\.(png|jpg|gif|jpeg|ttf)$/,
-          use: [
+        use: [
           {
-              loader: 'file-loader',
-          }
-          ]
+            loader: "file-loader",
+          },
+        ],
       },
       {
         test: /\.svg$/,
         use: [
           {
-            loader: 'svg-url-loader',
+            loader: "svg-url-loader",
             options: {
               limit: 10000,
             },
@@ -40,9 +40,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.json', '.jsx'],
+    extensions: [".js", ".json", ".jsx"],
   },
-  plugins: [
-    new HtmlWebpackPlugin({ template: 'template.html' }),
-  ],
+  plugins: [new HtmlWebpackPlugin({ template: "template.html" })],
 };

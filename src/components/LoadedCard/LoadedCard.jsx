@@ -1,6 +1,16 @@
 import React, { useState, useRef } from 'react';
 
-import Message from './Message';
+import Message from '../Message/Message';
+import {
+  Card,
+  CardHeader,
+  CardHeading,
+  CardBox,
+  CardLinkWrapper,
+  CardLink,
+  CardIcon,
+} from '../shared/Card';
+import { Button } from '../shared/Button';
 
 const LoadedCard = ({ imgUrl, isImgLoaded, cb }) => {
   const [message, setMessage] = useState('');
@@ -15,7 +25,7 @@ const LoadedCard = ({ imgUrl, isImgLoaded, cb }) => {
         setMessage('');
       }, 1500);
       return;
-      }
+    }
     // The clipboard-write permission is granted automatically to pages when they are in the active tab
     try {
       await navigator.clipboard.writeText(imgUrlRef.current.innerText);
@@ -25,24 +35,26 @@ const LoadedCard = ({ imgUrl, isImgLoaded, cb }) => {
     } finally {
       setTimeout(() => {
         setMessage('');
-      }, 1500)
+      }, 1500);
     }
-  }
+  };
 
   return (
-    <div className={isImgLoaded && imgUrl ? 'card' : 'card card--hidden'}>
-      <header className="card__header">
-        <span className="card__icon material-icons">check_circle</span>
-        <h2 className="card__heading">Uploaded Successfully!</h2>
-      </header>
-      <img className="card__box card__box--img" src={imgUrl} onLoad={cb} />
-      <div className="card__link-wrapper">
-        <p className="card__link" ref={imgUrlRef}>{imgUrl}</p>
-        <button size="small" className="button button--small" onClick={clipText}>Copy Link</button>
-      </div>
+    <Card hide={!isImgLoaded && !imgUrl}>
+      <CardHeader>
+        <CardIcon className=" material-icons">check_circle</CardIcon>
+        <CardHeading>Uploaded Successfully!</CardHeading>
+      </CardHeader>
+      <CardBox img as="img" src={imgUrl} onLoad={cb} />
+      <CardLinkWrapper>
+        <CardLink ref={imgUrlRef}>{imgUrl}</CardLink>
+        <Button small onClick={clipText}>
+          Copy Link
+        </Button>
+      </CardLinkWrapper>
       {message && <Message>{message}</Message>}
-    </div>
-  )
-}
+    </Card>
+  );
+};
 
 export default LoadedCard;
