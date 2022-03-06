@@ -1,28 +1,27 @@
-import React from "react";
+import React from 'react';
+import { StyledFooter, FooterContent, FooterLink } from './Footer.styles';
 
 const Footer = () => (
-  <footer className="footer">
-    <p className="footer__content">
+  <StyledFooter>
+    <FooterContent>
       created by
-      <a
-        className="footer__link"
+      <FooterLink
         href="https://github.com/sukcinitas"
         target="_blank"
         rel="noreferrer noopener"
       >
         <b> sukcinitas</b>
-      </a>
-      {" - "}
-      <a
-        className="footer__link"
+      </FooterLink>
+      {' - '}
+      <FooterLink
         href="https://devchallenges.io"
         target="_blank"
         rel="noreferrer noopener"
       >
         devChallenges.io
-      </a>
-    </p>
-  </footer>
+      </FooterLink>
+    </FooterContent>
+  </StyledFooter>
 );
 
 export default Footer;

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import Footer from './Footer';
-import UploadCard from './UploadCard';
-import Loader from './Loader';
-import LoadedCard from './LoadedCard';
-import Message from './Message';
-import './App.css';
+import Footer from './components/Footer/Footer';
+import UploadCard from './components/UploadCard/UploadCard';
+import LoaderCard from './components/LoaderCard/LoaderCard';
+import LoadedCard from './components/LoadedCard/LoadedCard';
+import Message from './components/Message/Message';
+import GlobalStyles from './components/shared/Global';
 
 const App = () => {
   const [imageUrl, setImageUrl] = useState('');
@@ -47,7 +47,7 @@ const App = () => {
   if (isUploading || imageUrl) {
     value = (
       <>
-        {(isUploading || !isImgLoaded) && <Loader />}
+        {(isUploading || !isImgLoaded) && <LoaderCard />}
         <LoadedCard
           imgUrl={imageUrl}
           cb={() => setIsImgLoaded(true)}
@@ -58,11 +58,14 @@ const App = () => {
   }
 
   return (
-    <div className="main">
-      {message && <Message>{message}</Message>}
-      <div className="wrapper">{value}</div>
-      <Footer />
-    </div>
+    <>
+      <GlobalStyles />
+      <div className="main">
+        {message && <Message>{message}</Message>}
+        <div className="wrapper">{value}</div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

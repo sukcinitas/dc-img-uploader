@@ -1,10 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 
-import Message from "./Message";
-import image from "../public/image.svg";
+import Message from '../Message/Message';
+import image from '../../../public/image.svg';
+import {
+  Card,
+  CardHeader,
+  CardHeading,
+  CardAdditional,
+  CardBox,
+  CardPic,
+  CardSubheading,
+} from '../shared/Card';
+import { Button, Input } from '../shared/Button';
 
 const UploadCard = ({ cb }) => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const [isImgLoaded, setIsImgLoaded] = useState(false);
   const dropZone = useRef();
 
@@ -27,14 +37,14 @@ const UploadCard = ({ cb }) => {
 
     // multer limits does not work ??
     if (file.size > 5 * 1024 * 1024) {
-      setMessage("File size must not exceed 5 MB!");
+      setMessage('File size must not exceed 5 MB!');
       setTimeout(() => {
-        setMessage("");
+        setMessage('');
       }, 1500);
       return;
     }
     const formData = new FormData();
-    formData.append("image", file);
+    formData.append('image', file);
     cb(formData);
   };
 
@@ -44,13 +54,11 @@ const UploadCard = ({ cb }) => {
       e.target.parentNode !== dropZone.current
     ) {
       // controls visual feedback, which cursor is displayed
-      e.dataTransfer.effectAllowed = "none";
-      dropZone.current &&
-        dropZone.current.classList.remove("card__box--drop-selected");
+      e.dataTransfer.effectAllowed = 'none';
+      dropZone.current && dropZone.current.classList.remove('selected');
     } else {
-      e.dataTransfer.effectAllowed = "all";
-      dropZone.current &&
-        dropZone.current.classList.add("card__box--drop-selected");
+      e.dataTransfer.effectAllowed = 'all';
+      dropZone.current && dropZone.current.classList.add('selected');
     }
     e.preventDefault();
     e.stopPropagation();
@@ -58,56 +66,54 @@ const UploadCard = ({ cb }) => {
 
   useEffect(() => {
     window.addEventListener(
-      "dragover",
+      'dragover',
       (e) => preventDefaultBehavior(e),
       false
     );
-    window.addEventListener("drop", (e) => passOnToTransfer(e), false);
+    window.addEventListener('drop', (e) => passOnToTransfer(e), false);
 
     return function cleanup() {
       window.removeEventListener(
-        "dragover",
+        'dragover',
         (e) => preventDefaultBehavior(e),
         false
       );
-      window.removeEventListener("drop", (e) => passOnToTransfer(e), false);
+      window.removeEventListener('drop', (e) => passOnToTransfer(e), false);
     };
   });
 
   return (
-    <form className={isImgLoaded ? "card" : "card card--hidden"} onSubmit={cb}>
-      <header className="card__header">
-        <h2 className="card__heading">Upload your image</h2>
-        <h4 className="card__subheading">File should be JPEG, PNG or GIF</h4>
-      </header>
-      <div
-        className="card__box card__box--drop"
+    <Card as="form" hide={!isImgLoaded} onSubmit={cb}>
+      <CardHeader>
+        <CardHeading>Upload your image</CardHeading>
+        <CardSubheading>File should be JPEG, PNG or GIF</CardSubheading>
+      </CardHeader>
+      <CardBox
+        drop
         ref={dropZone}
         onDragEnter={preventDefaultBehavior}
         onDragLeave={preventDefaultBehavior}
       >
-        <img
+        <CardPic
           src={image}
-          className="card__pic"
           alt="Icon of mountains and clouds"
           onLoad={() => setIsImgLoaded(true)}
         />
-        <p className="card__additional">Drag &amp; Drop your image here</p>
-      </div>
-      <p className="card__additional">Or</p>
-      <label className="button button--input" htmlFor="image">
+        <CardAdditional>Drag &amp; Drop your image here</CardAdditional>
+      </CardBox>
+      <CardAdditional>Or</CardAdditional>
+      <Button as="label" htmlFor="image">
         Choose a file
-        <input
+        <Input
           id="image"
           type="file"
-          className=" button button__input"
           accept="image/png, image/jpeg, image/gif"
           encType="multipart/form-data"
           onChange={(e) => passOnToTransfer(e)}
         />
-      </label>
+      </Button>
       {message && <Message>{message}</Message>}
-    </form>
+    </Card>
   );
 };
 
