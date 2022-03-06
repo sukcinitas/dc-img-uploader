@@ -44,6 +44,7 @@ File upload is implemented with Node.js Multer middleware and EXIF removal with 
 ### Built With
 
 - [React 17](https://reactjs.org/)
+- [Styled-Components](https://styled-components.com/)
 - [Axios](https://www.npmjs.com/package/axios)
 
 #### Compiling
@@ -100,6 +101,7 @@ More details [here](https://github.com/sukcinitas/dc-img-uploader-api#setup).
 - [Handling File Uploads in Node.js with Express and Multer](https://stackabuse.com/handling-file-uploads-in-node-js-with-expres-and-multer/)
 - [Browser Clipboard API](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
 - [File size limitation couldn't be implemented with Multer](https://github.com/expressjs/multer/issues/602).
+- [How To Use Styled-Components In React](https://www.smashingmagazine.com/2020/07/styled-components-react/)
 
 ## Contact
 
