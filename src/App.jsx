@@ -16,7 +16,7 @@ const App = () => {
   const location =
     window.location.href === 'http://localhost:8080/'
       ? 'http://localhost:3000/'
-      : 'https://boiling-citadel-16368.herokuapp.com/';
+      : 'https://power-sweet-archduke.glitch.me/';
 
   const upload = async (formData) => {
     try {
