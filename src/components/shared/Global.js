@@ -50,7 +50,7 @@ const GlobalStyles = createGlobalStyle`
 
   .wrapper {
     min-height: 100%;
-    @media screen and (max-width: 460px) {
+    @media screen and (max-height: 500px) {
       min-height: auto;
     }
   }

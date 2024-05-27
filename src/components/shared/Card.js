@@ -15,6 +15,9 @@ export const Card = styled.div`
   @media screen and (max-width: 460px) {
     width: 90%;
     max-width: 400px;
+  }
+
+  @media screen and (max-height: 500px) {
     position: static;
     transform: unset;
     margin: auto;
