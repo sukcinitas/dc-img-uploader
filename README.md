@@ -43,7 +43,7 @@ File upload is implemented with Node.js Multer middleware and EXIF removal with 
 
 ### Built With
 
-- [React 17](https://reactjs.org/)
+- [React 18](https://reactjs.org/)
 - [Styled-Components](https://styled-components.com/)
 - [Axios](https://www.npmjs.com/package/axios)
 
