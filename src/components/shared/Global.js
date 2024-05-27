@@ -50,6 +50,9 @@ const GlobalStyles = createGlobalStyle`
 
   .wrapper {
     min-height: 100%;
+    @media screen and (max-width: 460px) {
+      min-height: auto;
+    }
   }
 
   @keyframes move {
