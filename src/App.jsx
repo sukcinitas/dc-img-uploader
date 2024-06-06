@@ -13,10 +13,7 @@ const App = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [isImgLoaded, setIsImgLoaded] = useState(false);
   const [message, setMessage] = useState('');
-  const location =
-    window.location.href === 'http://localhost:8080/'
-      ? 'http://localhost:3000/'
-      : 'https://power-sweet-archduke.glitch.me/';
+  const location = process.env.REACT_APP_ORIGIN;
 
   const upload = async (formData) => {
     try {

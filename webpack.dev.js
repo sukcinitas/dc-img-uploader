@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common");
 
@@ -16,10 +17,12 @@ module.exports = merge(common, {
     hot: true,
     open: true,
     port: 8080,
-    proxy: [{
-      context: ['/api'],
-      target: 'http://localhost:3000/', 
-    }],
+    proxy: [
+      {
+        context: ["/api"],
+        target: "http://localhost:3000/",
+      },
+    ],
   },
   module: {
     rules: [
@@ -34,4 +37,10 @@ module.exports = merge(common, {
       },
     ],
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: "development",
+      REACT_APP_ORIGIN: "http://localhost:3000/",
+    }),
+  ],
 });

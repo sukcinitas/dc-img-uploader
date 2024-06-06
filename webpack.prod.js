@@ -3,6 +3,7 @@ const { merge } = require("webpack-merge");
 const common = require("./webpack.common");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = merge(common, {
   mode: "production", // configures DefinePlugin by default since v4
@@ -16,7 +17,13 @@ module.exports = merge(common, {
     minimize: true,
     minimizer: [new CssMinimizerPlugin()],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: "production",
+      REACT_APP_ORIGIN: "https://dc-img-uploader-api.onrender.com/",
+    }),
+  ],
   devtool: false,
   module: {
     rules: [
