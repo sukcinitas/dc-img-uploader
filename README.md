@@ -6,7 +6,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://imago-uploader.netlify.app/">
+    <a href="https://metaless-upload.netlify.app/">
       Demo
     </a>
     <span> | </span>
@@ -37,7 +37,7 @@
 
 ![](https://github.com/sukcinitas/media/blob/master/img-uploader/img-uploader.gif)
 
-An application to upload images with removed EXIF data. You can find the demo [here](https://imago-uploader.netlify.app).
+An application to upload images with removed EXIF data. You can find the demo [here](https://metaless-upload.netlify.app/).
 A complementary API can be found [here](https://github.com/sukcinitas/dc-img-uploader-api).
 File upload is implemented with Node.js Multer middleware and EXIF removal with Piexifjs. Only three lastly uploaded files are stored as this app is created only for learning purposes. File size is limited to 5 MB; file size limitation is implemented on a client side.
 
