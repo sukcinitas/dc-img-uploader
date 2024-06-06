@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Input = styled.input`
   position: absolute;
@@ -34,7 +34,7 @@ export const Button = styled.button`
   }
 
   ${(props) =>
-    props.small &&
+    props.$small &&
     css`
       font-size: 8px;
       margin: 0;

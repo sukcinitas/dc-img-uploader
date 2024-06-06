@@ -7,9 +7,9 @@ const LoaderCard = () => {
   return (
     <Card>
       <CardHeader>
-        <CardHeading left>Uploading...</CardHeading>
+        <CardHeading $left>Uploading...</CardHeading>
       </CardHeader>
-      <Loader role="progressbar"></Loader>
+      <Loader role="progress"></Loader>
     </Card>
   );
 };
