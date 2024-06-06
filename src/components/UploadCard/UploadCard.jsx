@@ -83,13 +83,13 @@ const UploadCard = ({ cb }) => {
   });
 
   return (
-    <Card as="form" hide={!isImgLoaded} onSubmit={cb}>
+    <Card as="form" $hide={!isImgLoaded} onSubmit={cb}>
       <CardHeader>
         <CardHeading>Upload your image</CardHeading>
         <CardSubheading>File should be JPEG, PNG or GIF</CardSubheading>
       </CardHeader>
       <CardBox
-        drop
+        $drop
         ref={dropZone}
         onDragEnter={preventDefaultBehavior}
         onDragLeave={preventDefaultBehavior}

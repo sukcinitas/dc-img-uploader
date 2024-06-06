@@ -40,15 +40,15 @@ const LoadedCard = ({ imgUrl, isImgLoaded, cb }) => {
   };
 
   return (
-    <Card hide={!isImgLoaded && !imgUrl}>
+    <Card $hide={!isImgLoaded && !imgUrl}>
       <CardHeader>
         <CardIcon className=" material-icons">check_circle</CardIcon>
         <CardHeading>Uploaded Successfully!</CardHeading>
       </CardHeader>
-      <CardBox img as="img" src={imgUrl} onLoad={cb} />
+      <CardBox $img as="img" src={imgUrl} onLoad={cb} />
       <CardLinkWrapper>
         <CardLink ref={imgUrlRef}>{imgUrl}</CardLink>
-        <Button small onClick={clipText}>
+        <Button $small onClick={clipText}>
           Copy Link
         </Button>
       </CardLinkWrapper>

@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Card = styled.div`
-  visibility: ${(props) => (props.hide ? 'hidden' : 'visible')};
+  visibility: ${(props) => (props.$hide ? "hidden" : "visible")};
   width: 400px;
   background-color: var(--light-1);
   box-shadow: 0px 4px 12px var(--shadow);
@@ -29,7 +29,7 @@ export const CardHeader = styled.header`
 `;
 
 export const CardHeading = styled.h2`
-  text-align: ${(props) => (props.left ? 'left' : 'center')};
+  text-align: ${(props) => (props.$left ? "left" : "center")};
   font-family: var(--font-2);
   font-size: 18px;
   color: var(--gray-2);
@@ -75,7 +75,7 @@ export const CardBox = styled.div`
   }
 
   ${(props) =>
-    props.drop &&
+    props.$drop &&
     css`
       background-color: var(--gray-7);
       border: 1px dashed var(--blue-2);
@@ -85,7 +85,7 @@ export const CardBox = styled.div`
     `}
 
   ${(props) =>
-    props.img &&
+    props.$img &&
     css`
       height: 224px;
       object-fit: cover;
