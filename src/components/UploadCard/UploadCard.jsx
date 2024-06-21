@@ -55,10 +55,10 @@ const UploadCard = ({ cb }) => {
     ) {
       // controls visual feedback, which cursor is displayed
       e.dataTransfer.effectAllowed = 'none';
-      dropZone.current && dropZone.current.classList.remove('selected');
+      dropZone?.current.classList.remove('selected');
     } else {
       e.dataTransfer.effectAllowed = 'all';
-      dropZone.current && dropZone.current.classList.add('selected');
+      dropZone?.current.classList.add('selected');
     }
     e.preventDefault();
     e.stopPropagation();
@@ -102,7 +102,7 @@ const UploadCard = ({ cb }) => {
         <CardAdditional>Drag &amp; Drop your image here</CardAdditional>
       </CardBox>
       <CardAdditional>Or</CardAdditional>
-      <Button as="label" htmlFor="image">
+      <Button as="label" htmlFor="image" $relative>
         Choose a file
         <Input
           id="image"

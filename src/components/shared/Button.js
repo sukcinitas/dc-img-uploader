@@ -47,4 +47,10 @@ export const Button = styled.button`
       letter-spacing: -0.035em;
       position: relative;
     `}
+
+    ${(props) =>
+    props.$relative &&
+    css`
+      position: relative;
+    `}
 `;
